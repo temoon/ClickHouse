@@ -193,6 +193,15 @@ void PipelineExecutor::expendPipeline(UInt64 pid)
     for (UInt64 node = from_processor; node < num_processors; ++node)
         addEdges(processors_map, node, 0, 0);
 
+    for (UInt64 node = from_processor; node < num_processors; ++node)
+    {
+        if (graph[node].directEdges.empty())
+        {
+            prepare_queue.push(node);
+            graph[node].status = ExecStatus::Preparing;
+        }
+    }
+
     addEdges(processors_map, pid, from_input, from_output);
 }
 
