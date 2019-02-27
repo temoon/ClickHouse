@@ -55,8 +55,9 @@ protected:
 
         bool hasData() const
         {
-            if (finished)
-                throw Exception("Finished port can't has data.", ErrorCodes::LOGICAL_ERROR);
+// TODO: check for output port only.
+//            if (finished)
+//                throw Exception("Finished port can't has data.", ErrorCodes::LOGICAL_ERROR);
 
             if (!needed)
                 throw Exception("Cannot check if not needed port has data.", ErrorCodes::LOGICAL_ERROR);
@@ -85,7 +86,7 @@ protected:
 
         void setNeeded()
         {
-            if (finished)
+            if (isFinished())
                 throw Exception("Can't set port needed if it is finished.", ErrorCodes::LOGICAL_ERROR);
 
 //            if (has_data)
