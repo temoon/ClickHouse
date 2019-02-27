@@ -180,7 +180,7 @@ void PipelineExecutor::expendPipeline(UInt64 pid)
 
     ProcessorsMap processors_map;
     processors_map[cur_node.processor] = pid;
-    for (const auto & processor : processors)
+    for (const auto & processor : new_processors)
     {
         processors_map[processor.get()] = graph.size();
         graph.emplace_back();
