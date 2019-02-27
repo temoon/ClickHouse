@@ -232,6 +232,10 @@ void PipelineExecutor::prepareProcessor(UInt64 pid, bool async)
             if (!async)
                 throw Exception("Processor returned status Wait before Async.", ErrorCodes::LOGICAL_ERROR);
         }
+        case IProcessor::Status::ExpandPipeline:
+        {
+            throw Exception("ExpandPipeline is not supported in PipelineExecutor.", ErrorCodes::LOGICAL_ERROR);
+        }
     }
 }
 
