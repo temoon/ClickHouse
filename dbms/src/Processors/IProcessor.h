@@ -206,7 +206,10 @@ public:
       * Method can't remove or reconnect existing ports, move data from/to port or perform calculations.
       * 'prepare' should be called again after expanding pipeline.
       */
-    virtual Processors expandPipeline() = 0;
+    virtual Processors expandPipeline()
+    {
+        throw Exception("Method 'expandPipeline' is not implemented for " + getName() + " processor", ErrorCodes::NOT_IMPLEMENTED);
+    }
 
     virtual ~IProcessor() = default;
 
