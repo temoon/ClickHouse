@@ -123,6 +123,7 @@ protected:
 
 public:
     Port(Block header) : header(std::move(header)) {}
+    Port(Block header, IProcessor * processor) : header(std::move(header)), processor(processor) {}
 
     const Block & getHeader() const { return header; }
     bool isConnected() const { return state != nullptr; }

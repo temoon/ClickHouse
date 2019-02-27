@@ -204,8 +204,8 @@ public:
         auto & main_output = outputs.front();
 
         Processors processors = {std::make_shared<ExpandingProcessor>()};
-        inputs.push_back(main_input.getHeader());
-        outputs.push_back(main_output.getHeader());
+        inputs.push_back({main_input.getHeader(), this});
+        outputs.push_back({main_output.getHeader(), this});
         connect(outputs.back(), processors.back()->getInputs().front());
         connect(processors.back()->getOutputs().front(), inputs.back());
 
