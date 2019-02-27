@@ -66,6 +66,8 @@ public:
 
     String getName() const { return "PipelineExecutor"; }
 
+    const Processors & getProcessors() const { return processors; }
+
 private:
     /// Graph related methods.
     using ProcessorsMap = std::unordered_map<const IProcessor *, UInt64>;
